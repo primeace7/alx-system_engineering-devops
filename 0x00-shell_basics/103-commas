@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e "$(ls -amvp -r --group-directories-first)\n"
+echo -e "$(ls -ampvr --group-directories-first)\n"
