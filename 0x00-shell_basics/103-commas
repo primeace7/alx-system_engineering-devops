@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e "$(ls -amp --group-directories-first --sort)\n"
+echo -e "$(ls -vamp --group-directories-first)\n"
