@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e "$(ls -vamp --group-directories-first)\n"
+echo -e "$(ls -vamp --group-directories-first)"
