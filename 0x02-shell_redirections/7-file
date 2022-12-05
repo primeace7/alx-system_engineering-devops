@@ -1,2 +1,2 @@
 #!/bin/bash
-touch <  $(echo -e "\\*\\\\'"Best School"\\'\\\\*$\\?\\*\\*\\*\\*\\*:) \m")
+echo -e 'Best School' > $(echo -e "\*\\'"Best School"\'\\*$\?\*\*\*\*\*:)")
