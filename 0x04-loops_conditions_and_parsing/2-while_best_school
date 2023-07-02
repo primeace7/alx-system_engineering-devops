@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # use a while loop to print the string "Best School" 10 times
 
 i=10

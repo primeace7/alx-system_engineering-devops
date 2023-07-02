@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # print numbers 1 to 20 with some variations on different iterations
 
 i=1

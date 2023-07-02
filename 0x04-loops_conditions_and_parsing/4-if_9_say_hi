@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # print the string "Best School" 10 times with "Hi" on 9th iteration
 
 i=10

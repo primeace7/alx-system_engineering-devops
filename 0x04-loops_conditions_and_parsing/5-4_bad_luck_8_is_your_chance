@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # print "Best School" 10 times with some variations on different iterations
 
 i=10

@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # print a specific field from all filenames in the current directory
 
 i=$(find ./ -type f | cut -d "-" -f 2)

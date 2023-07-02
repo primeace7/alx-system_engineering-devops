@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-
 # print some information about a file called "school"
 
-school=~./school
-[[ school ]]
+sch=~./school
 if [[ -e school ]]; then
    echo "school file exists"
    if [[ ! -s school ]]; then
