@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 # print some information about a file called "school"
 
-sch=~./school
-if [[ -e school ]]; then
+sch=$(find ./ -name school)
+if [[ -e $sch ]]; then
    echo "school file exists"
-   if [[ ! -s school ]]; then
+   if [[ ! -s $sch ]]; then
       echo "school file is empty"
    else
       echo "school file is not empty"
    fi
-   if [[ -f school ]]; then
+   if [[ -f $sch ]]; then
       echo "school is a regular file"
    fi
 else

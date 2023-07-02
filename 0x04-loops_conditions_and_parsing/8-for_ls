@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # print a specific field from all filenames in the current directory
 
-i=$(find ./ -type f | cut -d "-" -f 2)
-for j in $i; do
-    echo "$j"
+list="$(find ./ -type f | cut -d "-" -f 2)"
+for j in $list; do
+    echo  "$j"
 done
