@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# print "Best School" 10 times with some variations on different iterations
+
+i=10
+while ((i > 0)); do
+    if [[ $i == 7 ]]; then
+	echo "bad luck"
+    elif [[ $i == 3 ]]; then
+	echo "good luck"
+    else echo "Best School"
+    fi
+    ((i -= 1))
+done

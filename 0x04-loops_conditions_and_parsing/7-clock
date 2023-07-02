@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# print numbers 1 to 20 with some variations on different iterations
+
+i=1
+while ((i < 13)); do
+    echo "Hour: $i"
+    j=1
+    while ((j < 60)); do
+	echo "$j"
+	((j += 1))
+    done
+    ((i += 1))
+done

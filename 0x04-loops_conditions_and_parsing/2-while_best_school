@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# use a while loop to print the string "Best School" 10 times
+
+i=10
+while ((i > 0)); do
+    echo "Best School"
+    ((i -= 1))
+done
