@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-sudo cp /etc/hosts ~/hosts.dup
-sudo sed -i 's/127.0.0.1/127.0.0.2/' ~/hosts.dup
-sudo echo -e "8.8.8.8\t\tfacebook.com" >> ~/hosts.dup
-sudo cat hosts.dup > /etc/hosts
