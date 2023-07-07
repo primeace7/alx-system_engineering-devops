@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# display the content of the /etc/passwd file in a string
+
+cat /etc/passwd |IFS=':' while read user group home shell id passwd id_info; do
+    echo "The user $user is part of the $group gang"
+done

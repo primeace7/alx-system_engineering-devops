@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# cut and display some sections of the /etc/passwd file
+
+cat /etc/passwd | cut -d ':' -f 1-3 | while read string; do
+    echo "$string"
+done
