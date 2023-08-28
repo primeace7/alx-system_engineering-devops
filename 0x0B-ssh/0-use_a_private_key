@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
+# connects to a server using a specific identity(privatekey) file
 
 ssh -i ~/.ssh/school ubuntu@54.84.79.181
