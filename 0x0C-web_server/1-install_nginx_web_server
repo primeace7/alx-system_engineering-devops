@@ -3,6 +3,8 @@
 
 sudo apt install nginx -y
 sudo service nginx start
+sudo chown -R ubuntu:ubuntu /var/www/
+sudo chmod -R 755 /var/www/
 sudo cat > /var/www/html/index.html << _EOF_
 Hello World!
 _EOF_
