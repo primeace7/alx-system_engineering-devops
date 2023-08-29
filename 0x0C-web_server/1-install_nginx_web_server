@@ -2,14 +2,9 @@
 # install and configure a web server in a remote server
 
 sudo apt install nginx -y
+sudo service nginx start
 sudo cat > /var/www/html/index.html << _EOF_
-<html>
-    <head>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+Hello World!
 _EOF_
 
 sudo service nginx restart
