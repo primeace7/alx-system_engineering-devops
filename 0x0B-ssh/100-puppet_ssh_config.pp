@@ -1,9 +1,15 @@
 # Use puppet to change a configuration file for ssh
 
-exec {'append_config':
-  command => "/usr/bin/echo 'IdentityFile = ~/.ssh/school' >> /etc/ssh/ssh_config"
+include stdlib
+
+file_line {'append_config':
+  path   => '/etc/ssh/ssh_config',
+  line   => 'IdentityFile = ~/.ssh/school',
+  ensure => present
   }
 
-  exec {'append_config2':
-    command => "/usr/bin/echo 'PasswordAuthentication = no' >> /etc/ssh/ssh_config"
+file_line {'append_config2':
+    path => '/etc/ssh/ssh_config',
+    line => 'PasswordAuthentication = no',
+  ensure => present
   }
