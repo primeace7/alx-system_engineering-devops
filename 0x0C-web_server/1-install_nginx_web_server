@@ -1,12 +1,20 @@
 #!/usr/bin/env bash
 # install and configure a web server in a remote server
 
+# install nginx
 sudo apt install nginx -y
-sudo service nginx start
-sudo chown -R ubuntu:ubuntu /var/www/
-sudo chmod -R 755 /var/www/
-sudo cat > /var/www/html/index.html << _EOF_
-Hello World!
-_EOF_
 
+# start nginx service
+sudo service nginx start
+
+# give user ubuntu owner privileges
+sudo chown -R ubuntu:ubuntu /var/www/
+
+# make sure user ubuntu has full access to the folder
+sudo chmod -R 755 /var/www/
+
+# copy string into index html file
+sudo echo "Hello World!" > /var/www/html/index.html
+
+#restart nginx server to effect changes
 sudo service nginx restart
