@@ -2,7 +2,7 @@
 # install and configure Nginx server so that /redirect_me is redirecting to another page.
 
 # install nginx
-sudo apt install nginx -y
+#sudo apt install nginx -y
 
 # start nginx service
 sudo service nginx start
@@ -21,6 +21,6 @@ sudo service nginx restart
 
 original="root \/var\/www\/html;"
 
-replacement="$original\n\n\tlocation \/redirect_me\n\t\{\n\t\tredirect 301 root;\n\t\}"
+replacement="$original\n\n\tlocation \/redirect_me\n\t\{\n\t\tredirect 301 \/var\/www\/html;\n\t\}"
 
-sed -i.bak "s/$original/$replacement/" /etc/nginx/sites-available/default
+sudo sed -i.bak "s/$original/$replacement/" /etc/nginx/sites-enabled/default
