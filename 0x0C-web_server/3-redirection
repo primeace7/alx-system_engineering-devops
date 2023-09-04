@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# install and configure a web server in a remote server
+# install and configure Nginx server so that /redirect_me is redirecting to another page.
 
 # install nginx
 sudo apt install nginx -y
@@ -18,3 +18,9 @@ echo "Hello World!" > /var/www/index.html
 
 #restart nginx server to effect changes
 sudo service nginx restart
+
+original="root \/var\/www\/html;"
+
+replacement="$original\n\n\tlocation \/redirect_me\n\t\{\n\t\tredirect 301 root;\n\t\}"
+
+sed -i.bak "s/$original/$replacement/" ./test
