@@ -2,6 +2,6 @@
 # configure an apache server to serve simple message
 
 sudo service apache2 start
-sudo echo 'Hello Holberton' > /var/www/apache2/sites-enabled/html/index.html
+echo 'Hello Holberton' > /var/www/apache2/sites-enabled/html/index.html
 sed -i.bak 's/DocumentRoot \/var\/.*/DocumentRoot \/var\/www\/test\//' /etc/www/apache2/sites-enabled/*default.conf
 service apache2 reload
