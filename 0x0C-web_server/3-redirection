@@ -14,14 +14,14 @@ sudo chown -R ubuntu:ubuntu /var/www/
 sudo chmod -R 755 /var/www/
 
 # copy string into index html file
-echo "Hello World!" > /var/www/html/index.html
+echo "Hello World!\n" > /var/www/html/index.html
 
 #restart nginx server to effect changes
 sudo service nginx restart
 
 original="root \/var\/www\/html;"
 
-replacement="$original\n\n\tlocation \/redirect_me\n\t\{\n\t\treturn 301 root;\n\t\}"
+replacement="$original\n\n\tlocation \/redirect_me\n\t\{\n\t\treturn 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n\t\}"
 
 sudo sed -i.bak "s/$original/$replacement/" /etc/nginx/sites-available/default
 
