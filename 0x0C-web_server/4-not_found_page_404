@@ -18,11 +18,11 @@ echo "Hello World!" > /var/www/html/index.html
 
 original="root \/var\/www\/html;"
 
-replacement="$original\n\n\tlocation \/redirect_me\n\t\{\n\t\treturn 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n\t\}"
+replacement="$original\n\tlocation \/redirect_me\n\t\{\n\t\treturn 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n\t\}"
 
 sudo sed -i.bak "s/$original/$replacement/" /etc/nginx/sites-available/default
 
-replacement2="$original\n\n\terror_page 404 =404 \/404.html;\n"
+replacement2="$original\n\terror_page 404 =404 \/404.html;\n"
 sudo sed -i.bak "s/$original/$replacement2/" /etc/nginx/sites-available/default
 
 sudo echo -e "Ceci n'est pas une page\n" > /var/www/html/404.html

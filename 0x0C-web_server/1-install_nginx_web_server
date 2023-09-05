@@ -2,19 +2,12 @@
 # install and configure a web server in a remote server
 
 # install nginx
-sudo apt install nginx -y
+apt install nginx -y
 
-# start nginx service
-sudo service nginx start
-
-# give user ubuntu owner privileges
-sudo chown -R ubuntu:ubuntu /var/www/
-
-# make sure user ubuntu has full access to the folder
-sudo chmod -R 755 /var/www/
-
-# copy string into index html file
-sudo echo 'Hello World!' > /var/www/html/index.html
+# edit the sites-enabled config file in-place
+old_string="as directory, then fall back to displaying a 404."
+new_string="$old_string\n\n\t\treturn \"Hello World!\n\";\n"
+sed -i.bak "s/$old_string/$new_string/" /etc/nginx/sites-enabled/default
 
 #restart nginx server to effect changes
-sudo service nginx restart
+service nginx restart
