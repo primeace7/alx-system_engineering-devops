@@ -2,28 +2,26 @@
 # install and configure a web server in a remote server
 
 # update package repo
-#apt update
+apt update
 
 # install nginx
-#apt install nginx -y
+apt install nginx -y
 
 #create new index page
-#echo "Hello World!" > /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
 
 # create a new location context in nginx config for redirection task
 original="root \/var\/www\/html;"
 
-#replacement="$original\n\n\tlocation \/redirect_me\n\t\{\n\t\treturn 301 https:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4;\n\t\}"
+replacement="$original\n\n\tlocation \/redirect_me\n\t\{\n\t\treturn 301 https:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4;\n\t\}"
 
-#sed -i.bak "s/$original/$replacement/" /etc/nginx/sites-enabled/default
+sed -i.bak "s/$original/$replacement/" /etc/nginx/sites-enabled/default
 
 # create new location context for 404 error, and new html page
 replacement2="$original\n\terror_page 404 =404 \/404.html;\n"
-#sudo sed -i "s/$original/$replacement2/" /etc/nginx/sites-enabled/default
+sudo sed -i "s/$original/$replacement2/" /etc/nginx/sites-enabled/default
 
 sudo echo -e "Ceci n'est pas une page\n" > /var/www/html/404.html
 
-sudo service nginx restart
-
 #start nginx server to effect changes
-#service nginx start
+service nginx start
