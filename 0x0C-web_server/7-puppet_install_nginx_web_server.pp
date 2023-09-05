@@ -15,5 +15,5 @@
 
   file_line {'enable redirect':
     path    => '/etc/nginx/sites-available/default',
-    line    => "\n\tlocation /redirect_me {\n\t\t return 310 \"https://youtube.com\";\n\t}\n",
+    line    => "\n\tlocation /redirect_me {\n\t\t return 301 \"https://youtube.com\";\n\t}\n",
       after => 'root\s+/var/www/html;' }
