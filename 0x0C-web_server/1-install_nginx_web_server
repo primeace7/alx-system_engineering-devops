@@ -4,10 +4,8 @@
 # install nginx
 apt install nginx -y
 
-# edit the sites-enabled config file in-place
-old_string="as directory, then fall back to displaying a 404."
-new_string="$old_string\n\n\t\treturn \"Hello World!\n\";\n"
-sed -i.bak "s/$old_string/$new_string/" /etc/nginx/sites-enabled/default
+#create new index page
+echo "Hello World!\n" > /var/www/html/index.html
 
 #restart nginx server to effect changes
 service nginx restart
