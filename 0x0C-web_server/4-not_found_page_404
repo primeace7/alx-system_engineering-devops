@@ -1,30 +1,29 @@
 #!/usr/bin/env bash
-# install and configure Nginx server so that /redirect_me is redirecting to another page.
+# install and configure a web server in a remote server
+
+# update package repo
+#apt update
 
 # install nginx
-sudo apt install nginx -y
+#apt install nginx -y
 
-# start nginx service
-sudo service nginx start
+#create new index page
+#echo "Hello World!" > /var/www/html/index.html
 
-# give user ubuntu owner privileges
-sudo chown -R ubuntu:ubuntu /var/www/
-
-# make sure user ubuntu has full access to the folder
-sudo chmod -R 755 /var/www/
-
-# copy string into index html file
-echo "Hello World!" > /var/www/html/index.html
-
+# create a new location context in nginx config for redirection task
 original="root \/var\/www\/html;"
 
-replacement="$original\n\tlocation \/redirect_me\n\t\{\n\t\treturn 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n\t\}"
+#replacement="$original\n\n\tlocation \/redirect_me\n\t\{\n\t\treturn 301 https:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4;\n\t\}"
 
-sudo sed -i.bak "s/$original/$replacement/" /etc/nginx/sites-available/default
+#sed -i.bak "s/$original/$replacement/" /etc/nginx/sites-enabled/default
 
+# create new location context for 404 error, and new html page
 replacement2="$original\n\terror_page 404 =404 \/404.html;\n"
-sudo sed -i.bak "s/$original/$replacement2/" /etc/nginx/sites-available/default
+#sudo sed -i "s/$original/$replacement2/" /etc/nginx/sites-enabled/default
 
 sudo echo -e "Ceci n'est pas une page\n" > /var/www/html/404.html
 
 sudo service nginx restart
+
+#start nginx server to effect changes
+#service nginx start
