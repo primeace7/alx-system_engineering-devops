@@ -2,10 +2,10 @@
 # install and configure a web server in a remote server
 
 # install nginx
-#apt install nginx -y
+apt install nginx -y
 
 #create new index page
-echo "Hello World!" > /var/www/index.html
+echo "Hello World!" > /var/www/html/index.html
 
 #restart nginx server to effect changes
 service nginx restart
