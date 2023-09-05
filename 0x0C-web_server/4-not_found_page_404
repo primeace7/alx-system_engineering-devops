@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# install and configure Nginx server so that /redirect_me is redirecting to another page.
+
+# install nginx
+sudo apt install nginx -y
+
+# start nginx service
+sudo service nginx start
+
+# give user ubuntu owner privileges
+sudo chown -R ubuntu:ubuntu /var/www/
+
+# make sure user ubuntu has full access to the folder
+sudo chmod -R 755 /var/www/
+
+# copy string into index html file
+echo "Hello World!" > /var/www/html/index.html
+
+original="root \/var\/www\/html;"
+
+replacement="$original\n\n\tlocation \/redirect_me\n\t\{\n\t\treturn 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n\t\}"
+
+sudo sed -i.bak "s/$original/$replacement/" /etc/nginx/sites-available/default
+
+replacement2="$original\n\n\terror_page 404 =404 \/404.html;\n"
+sudo sed -i.bak "s/$original/$replacement2/" /etc/nginx/sites-available/default
+
+sudo echo -e "Ceci n'est pas une page\n" > /var/www/html/404.html
+
+sudo service nginx restart

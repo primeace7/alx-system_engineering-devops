@@ -14,7 +14,7 @@ sudo chown -R ubuntu:ubuntu /var/www/
 sudo chmod -R 755 /var/www/
 
 # copy string into index html file
-echo "Hello World!" > /var/www/html/index.html
+sudo echo 'Hello World!' > /var/www/html/index.html
 
 #restart nginx server to effect changes
 sudo service nginx restart
