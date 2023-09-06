@@ -10,7 +10,7 @@ host="$(hostname)"
 new_string="$old_string\n\n\t#Add custom response headers\n\tadd_header X-Served-By $host;"
 
 # define full path to nginx config file to modify
-config_file="/etc/nginx/sites-enabled/default"
+config_file="/etc/nginx/sites-available/default"
 
 # modify the config file in-place
 sed -i "s/$old_string/$new_string/" "$config_file"
