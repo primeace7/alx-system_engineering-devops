@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#install and configure haproxy to load-balance web01 and web02
+
+# update packages repo
+apt update
+
+#install haproxy
+apt install haproxy -y
+
+#configure haproxy
+haproxy_path="/etc/haproxy/haproxy.cfg"
+server1="201159-web-01"
+server2="201159-web-02"
+server1_ip="54.84.79.181"
+server2_ip="52.3.241.176"
+
+cat >> "$haproxy_path" <<EOF
+
+frontend myfrontend
+	balance roundrobin
+	bind $server1_ip:80
+	bind $server2_ip:80
+
+backend $server1
+	server $server1 $server1_ip:80
+
+backend $server2
+	server $server2 $server2_ip:80
+EOF
+
+#reload haproxy
+service haproxy reload
