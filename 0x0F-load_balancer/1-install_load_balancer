@@ -6,6 +6,7 @@ apt update
 
 #install haproxy
 apt install haproxy -y
+service haproxy start
 
 #configure haproxy
 haproxy_path="/etc/haproxy/haproxy.cfg"
