@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
 # configure nginx to return custom response header to identify distinct servers
 
+# update packages repo
+apt update
+
+# install nginx
+apt install nginx -y
+
 # define line to search for in nginx config file
 old_string="root \/var\/www\/html;"
 
 # get hostname
-host="$(hostname)"
+host="$(sudo hostname)"
 # define replacement line in nginx config file
 new_string="$old_string\n\n\t#Add custom response headers\n\tadd_header X-Served-By $host;"
 
