@@ -1,36 +1,5 @@
 #!/usr/bin/env bash
-
-# update package repo
-sudo apt update
-
-# install nginx
-sudo apt install nginx -y
-
-# create new index page
-sudo echo "Hello World!" > /var/www/html/index.html
-
-# create a new location context in nginx config for redirection task
-original="root \/var\/www\/html;"
-
-replacement="$original\n\tlocation ~ \/redirect_me\$ \{\n\t\treturn 301 https:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4;\n\t\}"
-
-sudo sed -i.bak "s/$original/$replacement/" /etc/nginx/sites-enabled/default
-
-# create new location context for 404 error, and new html page
-replacement2="$original\n\n\terror_page 404 =404 \/404.html;\n"
-sudo sed -i "s/$original/$replacement2/" /etc/nginx/sites-enabled/default
-
-sudo echo -e "Ceci n'est pas une page\n" > /var/www/html/404.html
-
-# remove backup files
-sudo rm /etc/nginx/sites-enabled/*.bak
-sudo rm /etc/nginx/sites-enabled/*~
-sudo rm /etc/nginx/sites-available/*.bak
-sudo rm /etc/nginx/sites-available/*~
-
-##
 # configure nginx to return custom response header to identify distinct servers
-##
 
 # define line to search for in nginx config file
 old_string="root \/var\/www\/html;"
