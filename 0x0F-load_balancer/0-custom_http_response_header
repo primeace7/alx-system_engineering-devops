@@ -21,5 +21,29 @@ sudo rm /etc/nginx/sites-enabled/*~
 sudo rm /etc/nginx/sites-available/*.bak
 sudo rm /etc/nginx/sites-available/*~
 
+##
+# configure nginx to return custom response header to identify distinct servers
+##
+
+# define line to search for in nginx config file
+old_string="root \/var\/www\/html;"
+
+# get hostname
+host="$(hostname)"
+# define replacement line in nginx config file
+new_string="$old_string\n\n\t#Add custom response headers\n\tadd_header X-Served-By $host;"
+
+# define full path to nginx config file to modify
+config_file="/etc/nginx/sites-enabled/default"
+
+# modify the config file in-place
+sudo sed -i.bak "s/$old_string/$new_string/" "$config_file"
+
+# remove backup files
+sudo rm /etc/nginx/sites-enabled/*.bak
+sudo rm /etc/nginx/sites-enabled/*~
+sudo rm /etc/nginx/sites-available/*.bak
+sudo rm /etc/nginx/sites-available/*~
+
 # restart nginx to apply changes
-sudo service nginx reload
+sudo service nginx start
