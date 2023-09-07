@@ -2,9 +2,7 @@
 #install and configure haproxy to load-balance web01 and web02
 
 # install haproxy for ubuntu focal 20.04
-apt-get install --no-install-recommends software-properties-common -y
-add-apt-repository ppa:vbernat/haproxy-2.8 -y
-apt-get install haproxy=2.8.\*
+apt install haproxy -y
 
 # start haproxy
 sudo service haproxy start
