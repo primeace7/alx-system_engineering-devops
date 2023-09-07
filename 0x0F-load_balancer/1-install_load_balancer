@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 #install and configure haproxy to load-balance web01 and web02
 
-# update packages repo
-apt update
+# install haproxy for ubuntu focal 20.04
+apt-get install --no-install-recommends software-properties-common -y
+add-apt-repository ppa:vbernat/haproxy-2.8 -y
+apt-get install haproxy=2.8.\*
 
-#install haproxy
-apt install haproxy -y
-service haproxy start
+# start haproxy
+sudo service haproxy start
 
 #configure haproxy
 haproxy_path="/etc/haproxy/haproxy.cfg"
@@ -15,19 +16,20 @@ server2="201159-web-02"
 server1_ip="54.84.79.181"
 server2_ip="52.3.241.176"
 
-cat >> "$haproxy_path" <<EOF
+sudo cat >> "$haproxy_path" <<EOF
 
 frontend myfrontend
 	balance roundrobin
-	bind $server1_ip:80
-	bind $server2_ip:80
+	bind :80
+	default_backend jeff_school
 
-backend $server1
+backend jeff_school
+	balance roundrobin
+	option httpchk HEAD /
+	default-server check
 	server $server1 $server1_ip:80
-
-backend $server2
 	server $server2 $server2_ip:80
 EOF
 
 #reload haproxy
-service haproxy reload
+sudo service haproxy reload
