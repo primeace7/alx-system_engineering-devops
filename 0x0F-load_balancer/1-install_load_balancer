@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 #install and configure haproxy to load-balance web01 and web02
 
+#update packages repo
+apt update
+
 # install haproxy for ubuntu focal 20.04
 apt install haproxy -y
 
