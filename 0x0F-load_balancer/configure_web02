@@ -7,9 +7,6 @@ sudo apt update
 # install nginx
 sudo apt install nginx -y
 
-#start nginx
-sudo service nginx start
-
 #create new index page
 sudo echo "Hello World!" > /var/www/html/index.html
 
