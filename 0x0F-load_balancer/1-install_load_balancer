@@ -4,6 +4,13 @@
 # install haproxy for ubuntu focal 20.04
 apt install haproxy -y
 
+# configure haproxy to start on server boot
+sudo cat >> /etc/default/haproxy <<EOF
+
+# configure haproxy to start on server boot
+ENABLED=1
+EOF
+
 # start haproxy
 sudo service haproxy start
 
