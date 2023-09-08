@@ -3,6 +3,8 @@
 
 #update packages repo
 apt update
+apt install cat -y
+apt install service -y
 
 # install haproxy
 apt-get install --no-install-recommends software-properties-common -y
