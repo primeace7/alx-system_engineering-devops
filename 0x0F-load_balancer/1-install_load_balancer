@@ -7,7 +7,7 @@ apt update
 # install haproxy
 apt-get install --no-install-recommends software-properties-common -y
 add-apt-repository ppa:vbernat/haproxy-2.0 -y
-apt-get install haproxy=2.0.\* -y
+apt-get install haproxy>=2.0.\* -y
 
 # configure haproxy to start on server boot
 cat >> /etc/default/haproxy <<EOF
@@ -25,7 +25,6 @@ server2_ip="52.3.241.176"
 cat >> "$haproxy_path" <<EOF
 
 frontend myfrontend
-	balance roundrobin
 	bind :80
 	default_backend jeff_school
 
