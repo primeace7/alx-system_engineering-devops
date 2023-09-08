@@ -3,6 +3,7 @@
 
 #update packages repo
 apt update
+apt install sudo
 apt install cat -y
 apt install service -y
 
@@ -12,19 +13,19 @@ add-apt-repository ppa:vbernat/haproxy-2.0 -y
 apt-get install haproxy>=2.0.\* -y
 
 # configure haproxy to start on server boot
-cat >> /etc/default/haproxy <<EOF
+sudo cat >> /etc/default/haproxy <<EOF
 # configure haproxy to start on server boot
 ENABLED=1
 EOF
 
 #configure haproxy
-haproxy_path=/etc/haproxy/haproxy.cfg
+haproxy_path="/etc/haproxy/haproxy.cfg"
 server1="201159-web-01"
 server2="201159-web-02"
 server1_ip="54.84.79.181"
 server2_ip="52.3.241.176"
 
-cat >> "$haproxy_path" <<EOF
+sudo cat >> "$haproxy_path" <<EOF
 
 frontend myfrontend
 	bind :80
@@ -39,4 +40,4 @@ backend jeff_school
 EOF
 
 # start haproxy
-service haproxy start
+sudo service haproxy start
