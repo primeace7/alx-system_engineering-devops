@@ -12,12 +12,6 @@ sudo apt-get install --no-install-recommends software-properties-common -y
 sudo add-apt-repository ppa:vbernat/haproxy-2.0 -y
 sudo apt-get install haproxy>=2.0.\* -y
 
-# configure haproxy to start on server boot
-sudo cat >> /etc/default/haproxy <<EOF
-# configure haproxy to start on server boot
-ENABLED=1
-EOF
-
 #configure haproxy
 haproxy_path="/etc/haproxy/haproxy.cfg"
 server1="201159-web-01"
@@ -37,6 +31,13 @@ backend jeff_school
 	default-server check
 	server $server1 $server1_ip
 	server $server2 $server2_ip
+EOF
+
+# configure haproxy to start on server boot
+sudo cat >> /etc/default/haproxy <<EOF
+
+# configure haproxy to start on server boot
+ENABLED=1
 EOF
 
 # start haproxy
