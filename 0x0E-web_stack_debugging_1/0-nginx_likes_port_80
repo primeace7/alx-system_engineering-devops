@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
 # configure an Nginx server to listen on port 80
 
-service nginx start
+path="/etc/nginx/sites-enabled/default"
+old="server {"
+new="$old\n\tlisten 80 default_server;\n\tlisten [::]:80 default_server;"
+sed -i "/^[[:space:]]listen*/d" $path
+sed -i "s/^$old/$new/" $path
+service nginx restart
