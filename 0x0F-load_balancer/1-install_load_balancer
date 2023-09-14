@@ -22,21 +22,21 @@ EOF
 haproxy_path="/etc/haproxy/haproxy.cfg"
 server1="201159-web-01"
 server2="201159-web-02"
-server1_ip="54.84.79.181"
-server2_ip="52.3.241.176"
+server1_ip="54.84.79.181:80"
+server2_ip="52.3.241.176:80"
 
 sudo cat >> "$haproxy_path" <<EOF
 
 frontend myfrontend
-	bind :80
+	bind *:80
 	default_backend jeff_school
 
 backend jeff_school
 	balance roundrobin
 	option httpchk HEAD /
 	default-server check
-	server $server1 $server1_ip:80
-	server $server2 $server2_ip:80
+	server $server1 $server1_ip
+	server $server2 $server2_ip
 EOF
 
 # start haproxy
