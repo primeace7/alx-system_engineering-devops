@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# Display information about subdomains
+
+# get command line args
+domain="$1"
+subdomain="$2"
+
+# define array/list of sub domains to use
+subs=('www' 'lb-01' 'web-01' 'web-02')
+func () {
+    if [[ -z "$subdomain" ]]; then # when a subdomain isn't given
+	for item in "${subs[@]}"; do
+	    url="$item.$domain"
+
+	    # extract record type and destination ip
+	    record_type="$(dig $url | grep '^[[:alpha:]]' | awk '{print $4}')"
+	    destination="$(dig $url | grep '^[[:alpha:]]' | awk '{print $5}')"
+
+	    output="The subdomain $url is a ${record_type} record and points to $destination"
+	    echo $output
+	done
+    else # when a subdomain is given
+	url="$subdomain.$domain"
+
+	# extract record type and destination ip
+	record_type="$(dig $url | grep '^[[:alpha:]]' | awk '{print $4}')"
+	destination="$(dig $url | grep '^[[:alpha:]]' | awk '{print $5}')"
+
+	output="The subdomain $url is a ${record_type} record and points to $destination"
+	echo "$output"
+    fi
+}
+
+func
