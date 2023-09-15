@@ -16,7 +16,7 @@ func () {
 	    record_type="$(dig $url | grep '^[[:alpha:]]' | awk '{print $4}')"
 	    destination="$(dig $url | grep '^[[:alpha:]]' | awk '{print $5}')"
 
-	    output="The subdomain $url is a ${record_type} record and points to $destination"
+	    output="The subdomain $item is a ${record_type} record and points to $destination"
 	    echo $output
 	done
     else # when a subdomain is given
@@ -26,7 +26,7 @@ func () {
 	record_type="$(dig $url | grep '^[[:alpha:]]' | awk '{print $4}')"
 	destination="$(dig $url | grep '^[[:alpha:]]' | awk '{print $5}')"
 
-	output="The subdomain $url is a ${record_type} record and points to $destination"
+	output="The subdomain $subdomain is a ${record_type} record and points to $destination"
 	echo "$output"
     fi
 }
