@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # configure an Nginx server to listen on port 80
-sed "/^[[:space:]]listen*/d" /etc/nginx/sites-enabled/default
-sed -i 's/^server {/\tlisten 80 default_server/' /etc/nginx/sites-enabled/default
+sed 's/^[[:space:]]*listen[[:space:]]*[[:digit:]]\{2,4\}/\n\tlisten 80/' /etc/nginx/sites-enabled/default
 service nginx restart
