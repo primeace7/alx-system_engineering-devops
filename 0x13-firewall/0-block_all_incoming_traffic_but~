@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# install and configure firewall on remote server with ufw
+
+# install ufw
+sudo apt install ufw -y
+
+# disable ufw and reset configurations
+sudo ufw disable
+sudo ufw reset
+
+# allow all outgoing traffic
+sudo ufw allow outgoing
+
+# deny all incoming traffic
+sudo ufw deny incoming
+
+# allow only ssh, http, https incoming traffic
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw allow ssh
+
+# enable ufw
+sudo ufw enable
