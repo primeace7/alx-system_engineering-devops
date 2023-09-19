@@ -12,10 +12,10 @@ service nginx stop
 sudo su nginx
 
 # configure nginx to listen on port 8080
-sudo sed -i 's/^[[:space:]]*listen 80/\tlisten 8080/' /etc/nginx/sites-enabled/default
+sed -i 's/^[[:space:]]*listen 80/\tlisten 8080/' /etc/nginx/sites-enabled/default
 
 # start nginx
-sudo service nginx start
+service nginx start
 
 # exit nginx user
 exit
