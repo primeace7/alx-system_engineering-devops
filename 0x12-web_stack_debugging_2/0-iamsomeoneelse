@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# run whoami command as the user given from command line
+
+# get user from command line
+user="$1"
+
+# run whoami commnad
+sudo su -c whoami "$user"
