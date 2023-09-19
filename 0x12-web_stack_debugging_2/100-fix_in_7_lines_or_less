@@ -16,6 +16,3 @@ sudo sed -i 's/^[[:space:]]*listen 80/\tlisten 8080/' /etc/nginx/sites-enabled/d
 
 # start nginx
 sudo service nginx start
-
-# exit nginx user
-exit
