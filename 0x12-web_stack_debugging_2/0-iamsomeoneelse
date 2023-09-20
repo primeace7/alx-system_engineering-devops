@@ -5,4 +5,4 @@
 user="$1"
 
 # run whoami commnad
-su -c whoami "$user"
+runuser -m -u "$user" whoami
