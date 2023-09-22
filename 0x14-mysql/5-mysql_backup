@@ -11,4 +11,4 @@ mysqldump -uroot --all-databases --password="$passwd" > backup.sql
 creation_time="$(date +%d-%m-%Y)"
 
 # compress the generated sql dump to a tar.gz archive
-sudo tar -cvf "$creation_time".tar.gz backup.sql
+sudo tar -cvzf "$creation_time".tar.gz backup.sql
