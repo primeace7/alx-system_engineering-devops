@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# script to create a backup for all databases on current server
+
+# get password from user
+passwd="$1"
+
+# generate mysql dump file
+mysqldump -uroot --all-databases --password="$passwd" > backup.sql
+
+# get current time and save as creation time
+creation_time="$(date +%d-%m-%Y)"
+
+# compress the generated sql dump to a tar.gz archive
+sudo tar -cvf "$creation_time".tar.gz backup.sql
