@@ -1,18 +1,7 @@
 #!/usr/bin/env bash
 # make nginx run as nginx user instead of root and listen on port 8080
-
-# install nginx if not already installed
 apt update
 apt install nginx -y
-
-# stop nginx if already running
-service nginx stop
-
-# log in as nginx user
 sudo su nginx
-
-# configure nginx to listen on port 8080
 sudo sed -i 's/^[[:space:]]*listen 80/\tlisten 8080/' /etc/nginx/sites-enabled/default
-
-# start nginx
 sudo service nginx start
