@@ -19,7 +19,7 @@ if __name__ == '__main__':
                            task.get('completed')]
     employee_tasks_count = len(employee_tasks_all)
 
-    print('Employee {} is done with tasks ({}/{}):'.format(
+    print('Employee {} is done with tasks({}/{}):'.format(
         employee_name, len(employee_tasks_done), employee_tasks_count))
     for task in employee_tasks_done:
         print('\t {}'.format(task['title']))
