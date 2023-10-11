@@ -12,8 +12,7 @@ def top_ten(subreddit):
     """
     url = 'https://www.reddit.com/r/{}/hot.json?raw_json=1'.format(subreddit)
     headers = {'user-agent': 'my_alx/0.0.1'}
-    payload = {'limit':10}
-    fetch = requests.get(url, data=payload, headers=headers, allow_redirects=False)
+    fetch = requests.get(url, headers=headers, allow_redirects=False)
     fetch_json = fetch.json()
 
     if fetch.status_code != 200:
