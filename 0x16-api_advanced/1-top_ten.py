@@ -21,7 +21,7 @@ def top_ten(subreddit):
         print('None')
         return
 
-    children = fetch_json.get('data').get('children')[1:]
+    children = fetch_json.get('data').get('children')[2:]
 
     for listing in children:
         for key, val in listing.items():
