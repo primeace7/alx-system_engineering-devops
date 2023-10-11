@@ -17,14 +17,18 @@ def top_ten(subreddit):
 
     if fetch.status_code != 200:
         print('None')
+        return
 
     children = fetch_json.get('data').get('children')
 
-    for i in range(10):
-        for listing in children:
-            for key, val in listing.items():
-                if key == 'data':
-                    print(val.get('title'))
+    count = 0
+    for listing in children:
+        if count == 9:
+            break
+        for key, val in listing.items():
+            if key == 'data':
+                print(val.get('title'))
+                count += 1
 
 
 top_ten(sys.argv[1])
