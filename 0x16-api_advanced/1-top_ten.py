@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
-"""Fetch the title of the first 10 hot posts of a subreddit supplied from
-   the command line
+"""
+Fetch the title of the first 10 hot posts of a subreddit supplied from
+the command line
 """
 import requests
 import sys
