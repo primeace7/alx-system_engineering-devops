@@ -3,8 +3,8 @@
 """Fetch the number of followers of a subreddit supplied from
 the command line
 """
-import sys
 import requests
+import sys
 
 
 def number_of_subscribers(subreddit):
