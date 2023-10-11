@@ -8,6 +8,8 @@ import requests
 
 
 def number_of_subscribers(subreddit):
+    """get and return the number of subscribers in a subreddit
+    """
     url = 'https://www.reddit.com/r/{}/about.json?raw_json=1'.format(subreddit)
     headers = {'user-agent': 'my_alx/0.0.1'}
     fetch = requests.get(url, headers=headers, allow_redirects=False)
