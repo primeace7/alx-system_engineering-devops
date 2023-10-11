@@ -27,6 +27,3 @@ def top_ten(subreddit):
         for key, val in listing.items():
             if key == 'data':
                 print(val.get('title'))
-
-
-top_ten(sys.argv[1])
