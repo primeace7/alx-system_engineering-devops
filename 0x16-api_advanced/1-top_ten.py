@@ -11,7 +11,7 @@ import sys
 def top_ten(subreddit):
     """get and print the first 10 hot posts of a subreddit
     """
-    url = 'https://www.reddit.com/r/{}/hot.json?raw_json=1&limit=11'.\
+    url = 'https://www.reddit.com/r/{}/hot.json?raw_json=1&limit=12'.\
         format(subreddit)
     headers = {'user-agent': 'my_alx/0.0.1'}
     fetch = requests.get(url, headers=headers, allow_redirects=False)
@@ -21,7 +21,7 @@ def top_ten(subreddit):
         print('None')
         return
 
-    children = fetch_json.get('data').get('children')[1:]
+    children = fetch_json.get('data').get('children')[2:]
 
     for listing in children:
         for key, val in listing.items():
