@@ -47,7 +47,6 @@ def count_words(subreddit, word_list):
     """count and print the number of occurences of each word in word_list
     in all hot titles of subreddit
     """
-
     split_list = word_list.split()
     word_list = [word.lower() for word in split_list]
     output_dict = helper(subreddit, hot_dict={}, name='', word_list=word_list)
